@@ -1,5 +1,6 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
+
 import { GetSingleTransaction } from "../queries";
 import { SingleTransactionData } from "../types";
 import { navigate } from "./NaiveRouter";
@@ -7,9 +8,11 @@ import { convertToEth } from "../utils/convertors";
 
 interface SingleTransactionProps {
   id: string | null;
-}
+} // props typedef
 
-const SingleTransaction: React.FC<SingleTransactionProps> = ({ id }) => {
+const SingleTransaction: React.FC<SingleTransactionProps> = ({
+  id,
+}: SingleTransactionProps) => {
   const handleGoBack = () => navigate(`/transactions`);
 
   const { loading, error, data } = useQuery<SingleTransactionData>(

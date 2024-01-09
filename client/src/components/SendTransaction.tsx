@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { Actions } from "../types";
 
 interface SendTransactionProps {
+  // props to read sender info
   sender: string;
 }
 
@@ -12,16 +13,16 @@ const SendTransaction: React.FC<SendTransactionProps> = ({
   sender,
 }: SendTransactionProps) => {
   const dispatch = useDispatch();
-  const { register, handleSubmit, setValue } = useForm();
+  const { register, handleSubmit, setValue } = useForm(); // handle validation and form state
 
-  const onSubmit = (data: any) => handleDispatch(data);
+  const onSubmit = (data: any) => handleDispatch(data); // have the form handler submit data instead of button
 
   const handleDispatch = useCallback(
     (data: any) => {
       dispatch({
         type: Actions.SendTransaction,
         payload: {
-          ...data,
+          ...data, // passing form data in
         },
       });
     },
@@ -30,7 +31,7 @@ const SendTransaction: React.FC<SendTransactionProps> = ({
 
   useEffect(() => {
     setValue("sender", sender);
-  }, [sender]);
+  }, [sender]); // setting sender ID
 
   return (
     <>
