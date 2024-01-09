@@ -50,7 +50,7 @@ const TransactionList: React.FC = () => {
 
   return (
     <div className="flex flex-col mt-20">
-      <div className="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between">
+      <div className="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between overflow-y-auto">
         <div className="p-1.5 min-w-full inline-block align-middle">
           {!!transactions.length ? (
             <>

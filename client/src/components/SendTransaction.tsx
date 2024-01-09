@@ -13,12 +13,18 @@ const SendTransaction: React.FC<SendTransactionProps> = ({
   sender,
 }: SendTransactionProps) => {
   const dispatch = useDispatch();
-  const { register, handleSubmit, setValue } = useForm(); // handle validation and form state
+  const { register, handleSubmit, setValue, reset } = useForm(); // handle validation and form state
 
   const onSubmit = (data: any) => handleDispatch(data); // have the form handler submit data instead of button
 
   const handleDispatch = useCallback(
     (data: any) => {
+      reset({
+        sender,
+        recipient: "",
+        amount: "",
+      });
+
       dispatch({
         type: Actions.SendTransaction,
         payload: {
