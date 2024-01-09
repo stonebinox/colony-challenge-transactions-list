@@ -19,6 +19,7 @@ const TransactionList: React.FC = () => {
   }, [data]);
 
   useEffect(() => {
+    // adding interval to grab new transactions every 2 seconds
     const interval = setInterval(() => {
       refetch();
     }, 2000);

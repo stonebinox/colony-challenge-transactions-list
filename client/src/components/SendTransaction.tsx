@@ -20,6 +20,7 @@ const SendTransaction: React.FC<SendTransactionProps> = ({
   const handleDispatch = useCallback(
     (data: any) => {
       reset({
+        // resetting form values to empty (except sender ofc)
         sender,
         recipient: "",
         amount: "",
