@@ -9,7 +9,7 @@ import { convertToEth } from "../utils/convertors";
 const TransactionList: React.FC = () => {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
 
-  const { loading, error, data } =
+  const { loading, error, data, refetch } =
     useQuery<TransactionsData>(GetAllTransactions);
 
   useEffect(() => {
@@ -17,6 +17,14 @@ const TransactionList: React.FC = () => {
       setTransactions(data.getAllTransactions);
     }
   }, [data]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      refetch();
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [refetch]);
 
   const handleNavigate = (hash: string) => navigate(`/transaction/${hash}`);
 
