@@ -13,7 +13,10 @@ import { Actions } from "../types";
 import { SaveTransaction } from "../queries";
 import { navigate } from "../components/NaiveRouter";
 
-function* sendTransaction() {
+function* sendTransaction(data: any) {
+  const {
+    payload: { recipient, amount },
+  } = data;
   const provider = new JsonRpcProvider("http://localhost:8545");
 
   // this could have been passed along in a more elegant fashion,
@@ -34,8 +37,8 @@ function* sendTransaction() {
   };
 
   const transaction = {
-    to: randomAddress(),
-    value: "1000000000000000000",
+    to: recipient,
+    value: amount.toString(),
   };
 
   try {
