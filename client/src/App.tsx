@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import NaiveRouter from './components/NaiveRouter';
-import Navigation from './components/Navigation';
+import NaiveRouter from "./components/NaiveRouter";
+import Navigation from "./components/Navigation";
 
-import './App.css';
+import "./App.css";
 
 function App() {
   return (
