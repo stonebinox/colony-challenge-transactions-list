@@ -11,6 +11,7 @@ import {
 import apolloClient from "../apollo/client";
 import { Actions } from "../types";
 import { SaveTransaction } from "../queries";
+import { navigate } from "../components/NaiveRouter";
 
 function* sendTransaction() {
   const provider = new JsonRpcProvider("http://localhost:8545");
@@ -62,8 +63,12 @@ function* sendTransaction() {
       mutation: SaveTransaction,
       variables,
     });
+
+    document.getElementById("hs-basic-modal")?.classList.add("hidden");
+
+    navigate(`/transaction/${receipt.hash}`);
   } catch (error) {
-    console.log("errx", error);
+    console.log(error);
   }
 }
 
